@@ -5,6 +5,7 @@ from jose import jwt, JWTError
 
 from app.config import settings
 from app.users.dao import UsersDAO
+from app.users.models import Users
 
 
 def get_token(request: Request):
@@ -30,3 +31,5 @@ async def get_current_user(token: str = Depends(get_token)):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
 
     return user
+
+
